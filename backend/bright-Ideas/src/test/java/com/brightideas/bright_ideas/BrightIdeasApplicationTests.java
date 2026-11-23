@@ -9,5 +9,4 @@ class BrightIdeasApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
