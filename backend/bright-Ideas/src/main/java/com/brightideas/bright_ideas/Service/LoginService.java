@@ -1,41 +1,46 @@
 package com.brightideas.bright_ideas.Service;
 
+
 import com.brightideas.bright_ideas.Dto.LoginRequest;
+import com.brightideas.bright_ideas.Dto.LoginResponse;
 import com.brightideas.bright_ideas.Model.User;
 import com.brightideas.bright_ideas.Repository.UserRepository;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class LoginService {
 
-    private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
-    public LoginService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+    public LoginService(UserRepository repository,
+                        PasswordEncoder passwordEncoder) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public User login(LoginRequest request) {
+    public LoginResponse login(LoginRequest request) {
 
-        // 1. Rechercher l'utilisateur par email
-        User user = userRepository.findByEmail(request.getEmail())
+        User user = repository
+                .findByEmail(request.getEmail())
                 .orElseThrow(() ->
-                        new RuntimeException("Email ou mot de passe incorrect."));
+                        new RuntimeException("Email incorrect")
+                );
 
-        // 2. Vérifier le mot de passe
-        boolean passwordCorrect = passwordEncoder.matches(
+        if (!passwordEncoder.matches(
                 request.getPassword(),
-                user.getPassword()
-        );
+                user.getPassword())) {
 
-        if (!passwordCorrect) {
-            throw new RuntimeException("Email ou mot de passe incorrect.");
+            throw new RuntimeException("Mot de passe incorrect");
         }
 
-        // 3. Retourner l'utilisateur connecté
-        return user;
+        return new LoginResponse(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                "Connexion réussie"
+        );
     }
 }

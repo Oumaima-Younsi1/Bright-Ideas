@@ -1,12 +1,7 @@
 package com.brightideas.bright_ideas.Controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.brightideas.bright_ideas.Dto.LoginRequest;
-import com.brightideas.bright_ideas.Model.User;
+import com.brightideas.bright_ideas.Dto.LoginResponse;
 import com.brightideas.bright_ideas.Service.LoginService;
 
 import org.springframework.http.ResponseEntity;
@@ -27,9 +22,9 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
         try {
-            User user = loginService.login(request);
+            LoginResponse response = loginService.login(request);
 
-            return ResponseEntity.ok("Connexion réussie !");
+            return ResponseEntity.ok(response);
 
         } catch (RuntimeException e) {
             return ResponseEntity.status(401)
