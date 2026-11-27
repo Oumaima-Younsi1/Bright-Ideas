@@ -5,124 +5,161 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #F5EFE6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
+  box-sizing: border-box;
+  background-color: #f8f5f360;
 }
 
-/* En-tête Bright Ideas */
-.brandHeader {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.brandHeader h1 {
-  color: #3E2723;
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.brandHeader p {
-  color: #6F4E37;
-  margin: 4px 0 0;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-/* Carte de connexion */
+/* Carte Connexion */
 .loginCard {
-  margin-top: 0;
-  background: #FFFFFF;
   width: 100%;
   max-width: 420px;
+  margin: -10px auto 35px;
   padding: 32px;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.12);
-  border: 1px solid #E6D5C3;
+  background-color: #fbf5ef;
+  border: 1px solid #e3d2c3;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(59, 35, 20, 0.12);
   box-sizing: border-box;
 }
 
+/* Titre */
 .loginCard h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #3E2723;
-  font-size: 1.4rem;
-  border-bottom: 2px solid #E6D5C3;
-  padding-bottom: 10px;
+  text-align: center;
+  color: #3b2314;
+  font-size: 27px;
+  margin-bottom: 8px;
 }
 
-/* Champs du formulaire */
+/* Sous-titre */
+.subtitle {
+  text-align: center;
+  color: #8b7563;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* Groupes de champs */
 .formGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .formGroup label {
-  font-size: 0.85rem;
+  color: #3b2314;
+  margin-bottom: 8px;
   font-weight: 600;
-  color: #3E2723;
-  margin-bottom: 6px;
+  font-size: 14px;
 }
 
 .formGroup input {
-  padding: 10px 12px;
-  border: 1px solid #B08968;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  background-color: #FFFFFF;
-  color: #3E2723;
-  transition: all 0.3s ease;
-}
-
-.formGroup input::placeholder {
-  color: #B08968;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #e3d2c3;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #3b2314;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
 }
 
 .formGroup input:focus {
-  outline: none;
-  border-color: #6F4E37;
-  box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.15);
+  border-color: #7b3f00;
+  box-shadow: 0 0 5px rgba(123, 63, 0, 0.2);
+}
+
+.formGroup input::placeholder {
+  color: #b49b84;
 }
 
 /* Mot de passe oublié */
 .forgotPassword {
   text-align: right;
   margin-top: -5px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .forgotPassword a {
-  color: #6F4E37;
-  font-size: 0.85rem;
+  color: #7b3f00;
+  font-size: 13px;
   text-decoration: none;
-  font-weight: 600;
 }
 
 .forgotPassword a:hover {
-  color: #3E2723;
   text-decoration: underline;
 }
 
-/* Bouton connexion */
+/* Messages */
+.alert {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 17px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.alertError {
+  background-color: #fbe9e7;
+  color: #c0392b;
+  border: 1px solid #e6b8b2;
+}
+
+.alertSuccess {
+  background-color: #e8f2e5;
+  color: #47734b;
+  border: 1px solid #c5ddc0;
+}
+
+/* Groupe des boutons */
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Bouton Créer un compte */
+.registerBtn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  color: #7b3f00;
+  border: 1px solid #7b3f00;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.registerBtn:hover {
+  background-color: #e3d2c3;
+  color: #3b2314;
+}
+
+/* Bouton Se connecter */
 .submitBtn {
   width: 100%;
-  padding: 12px;
-  background-color: #6F4E37;
-  color: #FFFFFF;
+  padding: 13px;
+  background-color: #7b3f00;
+  color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 8px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
 .submitBtn:hover {
-  background-color: #3E2723;
+  background-color: #3b2314;
 }
 
 .submitBtn:disabled {
@@ -130,23 +167,20 @@
   cursor: not-allowed;
 }
 
-/* Messages */
-.alert {
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  font-weight: 500;
+/* Version mobile */
+@media (max-width: 500px) {
+  .authContainer {
+    padding: 12px;
+  }
+
+  .loginCard {
+    margin: -10px auto 15px;
+    padding: 25px 20px;
+  }
+
+  .loginCard h2 {
+    font-size: 23px;
+  }
 }
 
-.alertError {
-  background-color: #F5EFE6;
-  color: #8B2E20;
-  border: 1px solid #B08968;
-}
 
-.alertSuccess {
-  background-color: #E6D5C3;
-  color: #3E2723;
-  border: 1px solid #B08968;
-}

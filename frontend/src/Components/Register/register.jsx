@@ -1,6 +1,8 @@
 
 
-import { useState } from "react";
+
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from './register.module.css';
 
 function Register() {
@@ -15,6 +17,7 @@ function Register() {
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
 
+    // Effacer l'erreur d'un champ
     function effacerErreur(champ) {
         setErreur((prev) => {
             const nouvelleErreur = { ...prev };
@@ -23,6 +26,7 @@ function Register() {
         });
     }
 
+    // Validation du formulaire
     function validerFormulaire() {
 
         let erreursTemp = {};
@@ -61,6 +65,7 @@ function Register() {
         return Object.keys(erreursTemp).length === 0;
     }
 
+    // Envoyer les données au Backend
     async function handleSubmit(e) {
 
         e.preventDefault();
@@ -122,6 +127,7 @@ function Register() {
         }
     }
 
+    // Effacer tous les champs
     function handleReset() {
 
         setName("");
@@ -140,12 +146,14 @@ function Register() {
 
             <h2>Créer un compte</h2>
 
+            {/* Message de succès */}
             {success && (
                 <p className={styles.successMessage}>
                     {success}
                 </p>
             )}
 
+            {/* Erreur du serveur */}
             {erreur.serveur && (
                 <p className={styles.errorMessage}>
                     {erreur.serveur}
@@ -154,6 +162,7 @@ function Register() {
 
             <form onSubmit={handleSubmit} noValidate>
 
+                {/* Nom complet */}
                 <div className={styles.formGroup}>
                     <label htmlFor="name">Nom complet :</label>
 
@@ -176,6 +185,7 @@ function Register() {
                     )}
                 </div>
 
+                {/* Alias */}
                 <div className={styles.formGroup}>
                     <label htmlFor="alias">Alias :</label>
 
@@ -198,6 +208,7 @@ function Register() {
                     )}
                 </div>
 
+                {/* Email */}
                 <div className={styles.formGroup}>
                     <label htmlFor="email">Email :</label>
 
@@ -220,6 +231,7 @@ function Register() {
                     )}
                 </div>
 
+                {/* Mot de passe */}
                 <div className={styles.formGroup}>
                     <label htmlFor="password">Mot de passe :</label>
 
@@ -242,6 +254,7 @@ function Register() {
                     )}
                 </div>
 
+                {/* Confirmation du mot de passe */}
                 <div className={styles.formGroup}>
                     <label htmlFor="confirmPassword">
                         Confirmer le mot de passe :
@@ -269,6 +282,7 @@ function Register() {
                     )}
                 </div>
 
+                {/* Boutons */}
                 <div className={styles.buttonGroup}>
 
                     <button
@@ -294,9 +308,12 @@ function Register() {
 
             </form>
 
+            {/* Lien vers Login */}
             <p className={styles.loginLink}>
                 Vous avez déjà un compte ?
-                <a href="/login"> Se connecter</a>
+                <Link to="/">
+                    Se connecter
+                </Link>
             </p>
 
         </section>

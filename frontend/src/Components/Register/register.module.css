@@ -1,0 +1,219 @@
+/* Conteneur principal */
+.authContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f8f5f360;
+}
+
+/* Carte Register */
+.registerContainer {
+    width: 100%;
+    max-width: 420px;
+    margin: 20px auto 35px;
+    padding: 32px;
+    background-color: #fbf5ef;
+    border: 1px solid #e3d2c3;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(59, 35, 20, 0.12);
+    box-sizing: border-box;
+}
+
+/* En-tête avec logo */
+.brandHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo {
+    width: 190px;
+    height: auto;
+    object-fit: contain;
+}
+
+.brandHeader p {
+    color: #8b7563;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Titre */
+.registerContainer h2 {
+    text-align: center;
+    color: #3b2314;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+/* Sous-titre */
+.subtitle {
+    text-align: center;
+    color: #8b7563;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Groupes de champs */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.formGroup label {
+    color: #3b2314;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.formGroup input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #e3d2c3;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #3b2314;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.formGroup input:focus {
+    border-color: #7b3f00;
+    box-shadow: 0 0 5px rgba(123, 63, 0, 0.2);
+}
+
+.formGroup input::placeholder {
+    color: #b49b84;
+}
+
+/* Messages */
+.alert {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 17px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.alertError {
+    background-color: #fbe9e7;
+    color: #c0392b;
+    border: 1px solid #e6b8b2;
+}
+
+.alertSuccess {
+    background-color: #e8f2e5;
+    color: #47734b;
+    border: 1px solid #c5ddc0;
+}
+
+/* Messages d'erreur */
+.inputError {
+    border: 1px solid #c0392b !important;
+}
+
+.errorMessage {
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* Groupe des boutons */
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Bouton Réinitialiser */
+.resetBtn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    text-align: center;
+    background-color: transparent;
+    color: #7b3f00;
+    border: 1px solid #7b3f00;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.resetbtn:hover {
+    background-color: #e3d2c3;
+    color: #3b2314;
+}
+
+/* Bouton Register */
+.submitBtn {
+    width: 100%;
+    padding: 13px;
+    background-color: #7b3f00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submitBtn:hover {
+    background-color: #3b2314;
+}
+
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Connexion */
+.loginLink {
+    text-align: center;
+    margin-top: 22px;
+    color: #6b5648;
+    font-size: 14px;
+}
+
+.loginLink a {
+    color: #7b3f00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.loginLink a:hover {
+    text-decoration: underline;
+}
+
+/* Version mobile */
+@media (max-width: 500px) {
+    .authContainer {
+        padding: 12px;
+    }
+
+    .registerContainer {
+        margin: 15px auto;
+        padding: 25px 20px;
+    }
+
+    .registerContainer h2 {
+        font-size: 23px;
+    }
+
+    .logo {
+        width: 160px;
+    }
+}

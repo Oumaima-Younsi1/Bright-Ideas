@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 import Header from '../../Header/header';
 
 function Login() {
-  
 
   const [formData, setFormData] = useState({
     email: '',
@@ -77,14 +77,20 @@ function Login() {
 
       <div className={styles.loginCard}>
 
-        <h2>Login</h2>
+        <h2>connexion</h2>
 
+        <p className={styles.subtitle}>
+          Connectez-vous à votre compte Bright Ideas
+        </p>
+
+        {/* Message d'erreur */}
         {error && (
           <div className={`${styles.alert} ${styles.alertError}`}>
             {error}
           </div>
         )}
 
+        {/* Message de succès */}
         {success && (
           <div className={`${styles.alert} ${styles.alertSuccess}`}>
             {success}
@@ -108,7 +114,7 @@ function Login() {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de passe</label>
 
             <input
               id="password"
@@ -122,21 +128,35 @@ function Login() {
           </div>
 
           <div className={styles.forgotPassword}>
-            <a href="/forgot-password">
+            <Link to="/forgot-password">
               Mot de passe oublié ?
-            </a>
+            </Link>
           </div>
 
-          <button
-            type="submit"
-            className={styles.submitBtn}
-            disabled={loading}
-          >
-            {loading ? 'Connexion...' : 'Login'}
-          </button>
+          <div className={styles.buttonGroup}>
+
+            {/* Bouton Login */}
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={loading}
+            >
+              {loading ? 'Connexion...' : 'connexion'}
+            </button>
+            {/* Bouton Créer un compte */}
+            <Link
+              to="/register"
+              className={styles.registerBtn}
+            >
+              Créer un compte
+            </Link>
+
+          </div>
 
         </form>
+
       </div>
+
     </div>
   );
 }
