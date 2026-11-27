@@ -1,0 +1,18 @@
+.brandHeader {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.brandHeader img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.brandHeader p {
+  color: #6F4E37;
+  font-size: 0.95rem;
+  font-weight: 500;
+}

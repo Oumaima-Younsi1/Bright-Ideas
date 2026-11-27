@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from "./assets/pages/login.jsx";
+import Login from "./Components/pages/Login/login.jsx";
 function App() {
   return (
     <div>

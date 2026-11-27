@@ -1,7 +1,6 @@
-
-
 import React, { useState } from 'react';
-import './Login.css';
+import styles from './login.module.css';
+import Header from '../../Header/header';
 
 function Login() {
 
@@ -12,7 +11,9 @@ function Login() {
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
 
+  // Récupérer les valeurs saisies
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,11 +21,13 @@ function Login() {
     });
   };
 
+  // Envoyer les informations au Backend
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError('');
     setSuccess('');
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -43,6 +46,7 @@ function Login() {
 
       if (!response.ok) {
         const messageErreur = await response.text();
+
         throw new Error(
           messageErreur || 'Email ou mot de passe incorrect.'
         );
@@ -54,45 +58,41 @@ function Login() {
 
       console.log('Utilisateur connecté :', data);
 
-      // La redirection sera ajoutée selon
-      // l'organisation des routes de Bright Ideas.
-
     } catch (err) {
       setError(
         err.message === 'Failed to fetch'
-          ? 'Serveur backend non démarré (port 8080).'
+          ? 'Impossible de contacter le serveur Backend.'
           : err.message
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="auth-container">
+    <div className={styles.authContainer}>
 
-      <div className="brand-header">
-        <h1>Bright Ideas</h1>
-        <p>Innovate. Connect. Create</p>
-      </div>
+      <Header />
 
-      <div className="login-card">
+      <div className={styles.loginCard}>
 
         <h2>Login</h2>
 
         {error && (
-          <div className="alert alert-error">
+          <div className={`${styles.alert} ${styles.alertError}`}>
             {error}
           </div>
         )}
 
         {success && (
-          <div className="alert alert-success">
+          <div className={`${styles.alert} ${styles.alertSuccess}`}>
             {success}
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="email">Email</label>
 
             <input
@@ -106,7 +106,7 @@ function Login() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="password">Password</label>
 
             <input
@@ -120,7 +120,7 @@ function Login() {
             />
           </div>
 
-          <div className="forgot-password">
+          <div className={styles.forgotPassword}>
             <a href="/forgot-password">
               Mot de passe oublié ?
             </a>
@@ -128,9 +128,10 @@ function Login() {
 
           <button
             type="submit"
-            className="submit-btn"
+            className={styles.submitBtn}
+            disabled={loading}
           >
-            Login
+            {loading ? 'Connexion...' : 'Login'}
           </button>
 
         </form>
@@ -138,4 +139,5 @@ function Login() {
     </div>
   );
 }
-export default  Login;
+
+export default Login;
